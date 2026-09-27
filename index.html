@@ -33,26 +33,28 @@ h1{margin:0 0 38px;color:#ff7415;font-size:clamp(30px,9vw,52px);letter-spacing:3
 </main>
 
 <script>
-let servers=[];
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-async function load(){
-  try{
-    const r=await fetch('/api/servers',{cache:'no-store'});
-    const d=await r.json(); servers=d.servers||[]; render();
-  }catch(e){
-    document.getElementById('servers').innerHTML='<div class="server">Unable to load servers</div>';
-  }
-}
-function render(){
-  document.getElementById('servers').innerHTML=servers.map(s=>`
-    <a class="server" href="${esc(s.online?s.url:'#')}" ${s.online?'target="_blank" rel="noopener noreferrer"':''}>
-      <div class="left"><span class="bubble"></span><div>
-        <div class="name">${esc(s.name)}</div><div class="url">${esc(s.url)}</div>
-        <div class="status ${s.online?'online':'offline'}">${s.online?'● ONLINE':'● OFFLINE'}</div>
-      </div></div><span class="arrow">›</span>
-    </a>`).join('');
-}
-load();
+const servers = [
+  {name:"SERVER 1", url:"https://sigma-md.up.railway.app", online:true},
+  {name:"SERVER 2", url:"https://sigma-md2.up.railway.app", online:true}
+];
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+}[m]));
+
+document.getElementById('servers').innerHTML = servers.map(s => `
+  <a class="server" href="${esc(s.online ? s.url : '#')}" ${s.online ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+    <div class="left">
+      <span class="bubble"></span>
+      <div>
+        <div class="name">${esc(s.name)}</div>
+        <div class="url">${esc(s.url.replace(/^https?:\/\//,''))}</div>
+        <div class="status ${s.online ? 'online' : 'offline'}">${s.online ? '● ONLINE' : '● OFFLINE'}</div>
+      </div>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+`).join('');
 </script>
 </body>
 </html>

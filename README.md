@@ -1,9 +1,14 @@
 # SIGMA-TECH User Panel
 
-User-only Vercel panel. Admin panel and admin login have been removed.
+Static Vercel-ready user panel.
 
-- SIGMA-TECH at the top
+- No Admin Panel
+- No API/runtime
+- No build command
+- SIGMA-TECH at top
 - Two Railway servers
 - Dark orange/black design
-- CREATED: SIGMA-MD at the bottom
-- No zoom
+- CREATED: SIGMA-MD at bottom
+- Zoom disabled
+
+Deploy the folder/repository directly as a Vercel project. Framework Preset can remain "Other" and Build Command should be empty.
