@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SIGMA-TECH</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:#080808;color:#fff;font-family:Arial,sans-serif}
+body{background:radial-gradient(circle at 50% 12%,#3b1805 0,transparent 32%),linear-gradient(145deg,#070707,#120b07,#070707)}
+.page{min-height:100vh;min-height:100svh;padding:38px 18px 20px;display:flex;flex-direction:column;align-items:center}
+h1{margin:0 0 38px;color:#ff7415;font-size:clamp(30px,9vw,52px);letter-spacing:3px;font-weight:900;text-shadow:0 0 20px #ff5b002e;user-select:none}
+.servers{width:min(100%,440px);display:flex;flex-direction:column;gap:18px}
+.server{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px;border:1px solid #ff6b155c;border-radius:27px;background:linear-gradient(145deg,#271408f5,#101010);text-decoration:none;color:#fff;box-shadow:0 12px 35px #0009;transition:.18s}
+.server:active{transform:scale(.97)}
+.left{display:flex;align-items:center;gap:15px;min-width:0}
+.bubble{width:48px;height:48px;flex:0 0 48px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffb36d,#ff650b 50%,#922700);box-shadow:0 0 22px #ff5b0050}
+.name{font-size:18px;font-weight:800}.url{margin-top:5px;color:#999;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:245px}
+.status{font-size:11px;margin-top:7px;font-weight:700}.online{color:#ff8a36}.offline{color:#777}.arrow{font-size:25px;color:#ff7415}
+.footer{margin-top:auto;padding-top:50px;color:#ff7415;font-size:13px;font-weight:800;letter-spacing:2px}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:#000b;z-index:10}
+.card{width:min(100%,420px);padding:25px;border:1px solid #ff74156b;border-radius:25px;background:#111;box-shadow:0 20px 70px #000}
+.card h2{margin:0 0 20px;color:#ff7415}.input,.btn{width:100%;padding:13px 15px;border-radius:13px;border:1px solid #ff74154d;background:#191919;color:#fff;outline:0}.btn{margin-top:12px;background:#e85e0b;border:0;font-weight:800}.close{float:right;color:#999;cursor:pointer}
+.admin-list{margin-top:18px;display:flex;flex-direction:column;gap:10px;max-height:55vh;overflow:auto}.row{padding:13px;border:1px solid #ffffff12;border-radius:15px;background:#171717}.row input{width:100%;margin:4px 0;padding:9px;border-radius:9px;border:1px solid #ffffff18;background:#0e0e0e;color:#fff}.actions{display:flex;gap:7px}.actions button{flex:1;padding:9px;border:0;border-radius:9px;background:#292929;color:#fff}.actions .danger{background:#8d2408}
+.error{color:#ff6540;font-size:12px;margin-top:9px}
+</style>
+</head>
+<body>
+<main class="page">
+<h1 id="logo">SIGMA-TECH</h1>
+<section id="servers" class="servers"></section>
+<footer class="footer">CREATED: SIGMA-MD</footer>
+</main>
+
+<script>
+let servers=[];
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+async function load(){
+  try{
+    const r=await fetch('/api/servers',{cache:'no-store'});
+    const d=await r.json(); servers=d.servers||[]; render();
+  }catch(e){
+    document.getElementById('servers').innerHTML='<div class="server">Unable to load servers</div>';
+  }
+}
+function render(){
+  document.getElementById('servers').innerHTML=servers.map(s=>`
+    <a class="server" href="${esc(s.online?s.url:'#')}" ${s.online?'target="_blank" rel="noopener noreferrer"':''}>
+      <div class="left"><span class="bubble"></span><div>
+        <div class="name">${esc(s.name)}</div><div class="url">${esc(s.url)}</div>
+        <div class="status ${s.online?'online':'offline'}">${s.online?'● ONLINE':'● OFFLINE'}</div>
+      </div></div><span class="arrow">›</span>
+    </a>`).join('');
+}
+load();
+</script>
+</body>
+</html>
