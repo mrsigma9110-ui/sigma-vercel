@@ -1,3 +1,3 @@
-# SIGMA-TECH Premium Server Hub
+# SIGMA-TECH Glass Premium Server Panel
 
-Static Vercel-ready two-server panel. No admin/API/runtime.
+Static Vercel-ready panel. Two clickable Railway server cards, premium glass/neon design, no admin panel, no pairing form, no API/runtime.

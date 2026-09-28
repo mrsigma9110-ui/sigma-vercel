@@ -3,62 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#121225">
+<meta name="theme-color" content="#050719">
 <title>SIGMA-TECH</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;color:#fff;background:#111020}
-body{min-height:100vh;min-height:100svh;overflow-x:hidden;background:radial-gradient(circle at 15% 15%,#354b9b38,transparent 28%),radial-gradient(circle at 90% 80%,#9b39702b,transparent 30%),linear-gradient(145deg,#0e0f20,#181629 48%,#211322)}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ffffff03 50%,transparent 80%)}
-.page{width:min(100%,520px);min-height:100vh;min-height:100svh;margin:auto;padding:32px 16px 22px;display:flex;flex-direction:column}
-.header{text-align:center;margin-bottom:25px}
-.logo{display:inline-block;margin:0;color:#fff;font-size:clamp(29px,8vw,43px);font-weight:950;letter-spacing:3px;text-shadow:0 0 20px #6778ff55}
-.sub{margin-top:7px;color:#8f96bd;font-size:11px;letter-spacing:3px;font-weight:700}
-.glowline{width:115px;height:3px;margin:13px auto 0;border-radius:99px;background:linear-gradient(90deg,#586dff,#8e56e8,#27d7c4);box-shadow:0 0 16px #6575ff88}
-.servers{display:flex;flex-direction:column;gap:17px}
-.server{cursor:pointer;position:relative;overflow:hidden;display:block;text-decoration:none;color:#fff;padding:21px;border-radius:25px;background:linear-gradient(145deg,#20213cdd,#19182bde);border:1px solid #6674e04f;box-shadow:0 16px 38px #0008,inset 0 1px 0 #ffffff0c}
-.server:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#6578ff,#36d6c4,transparent);opacity:.8}
-.server:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-35px;top:-45px;background:#6376ff15;filter:blur(2px)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+html,body{margin:0;width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:#fff}
+html{background:#030513}
+body{
+  min-height:100vh;min-height:100svh;overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 12%,#253b9a35,transparent 25%),
+    radial-gradient(circle at 15% 60%,#6b1cff20,transparent 28%),
+    radial-gradient(circle at 90% 72%,#00a8ff17,transparent 27%),
+    linear-gradient(145deg,#02030d 0%,#070a20 48%,#10051d 100%);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(115deg,transparent 12%,#ffffff04 49%,transparent 86%),
+    repeating-linear-gradient(0deg,#ffffff02 0 1px,transparent 1px 5px);
+}
+.page{
+  position:relative;z-index:1;width:min(100%,560px);min-height:100vh;min-height:100svh;
+  margin:auto;padding:24px 15px 20px;display:flex;flex-direction:column;
+}
+.header{text-align:center;margin-bottom:24px}
+.brand-small{
+  position:absolute;left:15px;top:18px;color:#aebcff;font-size:9px;
+  letter-spacing:2px;font-weight:900;opacity:.9
+}
+.brand-small:before{content:"♛";color:#5f7cff;font-size:17px;vertical-align:-3px;margin-right:5px}
+.online-pill{
+  position:absolute;right:15px;top:17px;padding:8px 12px;border-radius:20px;
+  border:1px solid #09d8b05c;background:#071b202b;color:#e8ebff;
+  font-size:9px;font-weight:900;letter-spacing:.7px;box-shadow:0 0 18px #00d8b01c
+}
+.online-pill i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10e6b5;box-shadow:0 0 9px #10e6b5;margin-right:6px}
+.logo{
+  margin:55px 0 0;font-size:clamp(35px,10vw,58px);line-height:.95;
+  font-weight:1000;letter-spacing:-1px;font-style:italic;
+  background:linear-gradient(100deg,#fff 18%,#c8d2ff 42%,#a94dff 67%,#fff 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 25px #7755ff36;
+}
+.sub{margin-top:13px;color:#aebce9;font-size:11px;font-weight:900;letter-spacing:4px}
+.glowline{width:150px;height:3px;margin:13px auto 0;border-radius:99px;background:linear-gradient(90deg,transparent,#00bfff,#764cff,#f043ff,transparent);box-shadow:0 0 18px #5b6dff88}
+
+.servers{display:flex;flex-direction:column;gap:18px;margin-top:2px}
+.server{
+  position:relative;display:block;overflow:hidden;color:#fff;text-decoration:none;
+  padding:21px 18px;border-radius:25px;
+  background:linear-gradient(135deg,#0b1740e8 0%,#090d27ed 52%,#120827e8 100%);
+  border:1px solid transparent;
+  box-shadow:0 18px 42px #000a,inset 0 1px 0 #ffffff12;
+  isolation:isolate;
+}
+.server:before{
+  content:"";position:absolute;inset:0;border-radius:25px;padding:1.5px;
+  background:linear-gradient(110deg,#00c8ff,#315dff,#a43dff,#ff40d6,#00c8ff);
+  background-size:250% 250%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:borderFlow 4s linear infinite;z-index:-1;
+}
+.server:after{
+  content:"";position:absolute;left:-30%;top:0;width:22%;height:100%;
+  background:linear-gradient(90deg,transparent,#6fe8ff,#a86bff,transparent);
+  filter:blur(7px);opacity:.35;animation:scan 4.5s linear infinite;z-index:0
+}
+.server:nth-child(2):after{animation-delay:1.7s}
+@keyframes borderFlow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes scan{0%{left:-30%;opacity:0}18%{opacity:.55}70%{opacity:.35}100%{left:112%;opacity:0}}
+.top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .info{display:flex;align-items:center;gap:14px;min-width:0}
-.icon{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#6378ff,#4b58c8);box-shadow:0 8px 22px #4f63ff35;font-size:24px}
-.name{font-size:19px;font-weight:900;letter-spacing:.3px}
-.url{margin-top:5px;color:#8f92aa;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:255px}
-.open{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:#ffffff09;border:1px solid #ffffff12;color:#aeb7ff;font-size:22px}
-.meta{display:flex;gap:25px;margin-top:17px;padding-top:13px;border-top:1px solid #ffffff0c;position:relative;z-index:1}
-.item{font-size:10px;color:#777c98;text-transform:uppercase;letter-spacing:1px;font-weight:700}
-.item b{display:block;margin-top:4px;font-size:12px;color:#20d8b8;letter-spacing:.2px}
-.badge{margin-left:auto;color:#20d8b8}
-.footer{margin-top:auto;padding-top:32px;text-align:center;color:#777b96;font-size:11px;letter-spacing:1.5px}
-.footer strong{color:#a7adff}
-@media(max-width:380px){.page{padding:26px 13px 18px}.server{padding:18px}.icon{width:48px;height:48px;flex-basis:48px}.url{max-width:205px}}
-
-
+.icon{
+  width:58px;height:58px;flex:0 0 58px;border-radius:50%;
+  display:grid;place-items:center;font-size:26px;
+  background:radial-gradient(circle at 32% 25%,#b8ffff,#5d8dff 38%,#7135ff 70%,#250d68);
+  border:2px solid #607cff;
+  box-shadow:0 0 18px #385dff80,0 0 34px #8b3dff30
+}
+.name{font-size:20px;font-weight:950;letter-spacing:.2px}
+.url{margin-top:6px;color:#aeb5d0;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:265px}
+.open{
+  width:45px;height:45px;flex:0 0 45px;border-radius:50%;display:grid;place-items:center;
+  color:#e8edff;font-size:31px;font-weight:300;
+  background:#08113788;border:1px solid #596fff;
+  box-shadow:0 0 18px #305cff35
+}
+.meta{position:relative;z-index:2;display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.item{
+  padding:8px 12px;border-radius:20px;background:#ffffff08;border:1px solid #ffffff10;
+  color:#9ea8ca;font-size:9px;font-weight:900;letter-spacing:.8px
+}
+.item b{color:#20e5ba;margin-left:5px;font-size:10px}
+.item.railway b{color:#9db9ff}
+.item.opened b{color:#d083ff}
+.server:active{transform:scale(.985)}
+.footer{
+  margin-top:auto;text-align:center;padding:34px 0 4px;
+  color:#7e87b5;font-size:11px;letter-spacing:3px;font-weight:900
+}
+.footer:before,.footer:after{
+  content:"";display:inline-block;width:42px;height:1px;vertical-align:middle;
+  margin:0 12px;background:linear-gradient(90deg,transparent,#667cff)
+}
+.footer strong{color:#a98cff;text-shadow:0 0 12px #8e55ff55}
+@media(max-width:380px){
+ .page{padding:22px 12px 18px}
+ .brand-small{left:12px}.online-pill{right:12px}
+ .logo{margin-top:54px;font-size:35px}
+ .server{padding:19px 15px}
+ .icon{width:52px;height:52px;flex-basis:52px}
+ .name{font-size:18px}.url{max-width:210px;font-size:11px}.open{width:41px;height:41px;flex-basis:41px}
+}
 </style>
 </head>
 <body>
 <main class="page">
-<header class="header">
-<h1 class="logo">SIGMA-TECH</h1>
-<div class="sub">PREMIUM SERVER HUB</div>
-<div class="glowline"></div>
-</header>
+  <div class="brand-small">SIGMA-TECH<br><span style="font-size:7px;letter-spacing:1.5px;color:#7182b7">WHATSAPP BOT</span></div>
+  <div class="online-pill"><i></i>2 SERVERS ONLINE</div>
 
+  <header class="header">
+    <h1 class="logo">SIGMA-TECH</h1>
+    <div class="sub">FAST • STABLE • SECURE</div>
+    <div class="glowline"></div>
+  </header>
 
+  <section class="servers">
+    <a class="server" href="https://sigma-md2.up.railway.app" target="_blank" rel="noopener noreferrer">
+      <div class="top">
+        <div class="info">
+          <div class="icon">▤</div>
+          <div>
+            <div class="name">SIGMA SERVER 01</div>
+            <div class="url">sigma-md2.up.railway.app</div>
+          </div>
+        </div>
+        <div class="open">→</div>
+      </div>
+      <div class="meta">
+        <div class="item">STATUS <b>● ACTIVE</b></div>
+        <div class="item railway">TYPE <b>☁ RAILWAY</b></div>
+        <div class="item opened">ACCESS <b>⚡ OPEN</b></div>
+      </div>
+    </a>
 
-<section class="servers">
-<a class="server" href="https://sigma-md.up.railway.app" target="_blank" rel="noopener noreferrer">
-<div class="top"><div class="info"><div class="icon">⚡</div><div><div class="name">SIGMA SERVER 01</div><div class="url">sigma-md.up.railway.app</div></div></div><div class="open">›</div></div>
-<div class="meta"><div class="item">STATUS<b>● ACTIVE</b></div><div class="item">TYPE<b>RAILWAY</b></div><div class="item badge">ACCESS<b>OPEN</b></div></div>
-</a>
-<a class="server" href="https://sigma-md2.up.railway.app" target="_blank" rel="noopener noreferrer">
-<div class="top"><div class="info"><div class="icon">⚡</div><div><div class="name">SIGMA SERVER 02</div><div class="url">sigma-md2.up.railway.app</div></div></div><div class="open">›</div></div>
-<div class="meta"><div class="item">STATUS<b>● ACTIVE</b></div><div class="item">TYPE<b>RAILWAY</b></div><div class="item badge">ACCESS<b>OPEN</b></div></div>
-</a>
-</section>
-<footer class="footer">CREATED: <strong>SIGMA-MD</strong></footer>
+    <a class="server" href="https://sigma-md.up.railway.app" target="_blank" rel="noopener noreferrer">
+      <div class="top">
+        <div class="info">
+          <div class="icon">▤</div>
+          <div>
+            <div class="name">SIGMA SERVER 02</div>
+            <div class="url">sigma-md.up.railway.app</div>
+          </div>
+        </div>
+        <div class="open">→</div>
+      </div>
+      <div class="meta">
+        <div class="item">STATUS <b>● ACTIVE</b></div>
+        <div class="item railway">TYPE <b>☁ RAILWAY</b></div>
+        <div class="item opened">ACCESS <b>⚡ OPEN</b></div>
+      </div>
+    </a>
+  </section>
+
+  <footer class="footer">CREATED: <strong>SIGMA-MD</strong></footer>
 </main>
-
-
 </body>
 </html>
