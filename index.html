@@ -1,144 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#121225">
 <title>SIGMA-TECH</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;min-height:100%;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}
-body{
-  overflow-x:hidden;
-  background:
-    radial-gradient(circle at 50% 8%,rgba(255,193,7,.13),transparent 27%),
-    linear-gradient(145deg,#030303 0%,#0b0903 48%,#020202 100%);
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:20;
-  background:repeating-linear-gradient(0deg,rgba(255,193,7,.018) 0 1px,transparent 1px 5px);
-  opacity:.55;
-}
-.page{
-  width:min(100%,520px);
-  min-height:100vh;min-height:100svh;
-  margin:auto;
-  padding:30px 18px 24px;
-  display:flex;flex-direction:column;align-items:center;
-}
-.title{
-  margin:0 0 30px;
-  color:#ffd21a;
-  font-size:clamp(31px,9vw,52px);
-  line-height:1;
-  letter-spacing:4px;font-weight:950;text-align:center;
-  text-shadow:0 0 8px #ffb30080,0 0 28px #ffb30035;
-  user-select:none;
-}
-.title-wrap{position:relative;display:inline-block}
-.title-wrap:after{
-  content:"";position:absolute;left:-8px;right:-8px;bottom:-10px;height:2px;
-  background:linear-gradient(90deg,transparent,#fff000,#ff7b00,transparent);
-  box-shadow:0 0 12px #ffd000;
-  animation:scanTitle 2.2s linear infinite;
-}
-@keyframes scanTitle{0%{transform:translateX(-8px);opacity:.3}50%{opacity:1}100%{transform:translateX(8px);opacity:.3}}
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;color:#fff;background:#111020}
+body{min-height:100vh;min-height:100svh;overflow-x:hidden;background:radial-gradient(circle at 15% 15%,#354b9b38,transparent 28%),radial-gradient(circle at 90% 80%,#9b39702b,transparent 30%),linear-gradient(145deg,#0e0f20,#181629 48%,#211322)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ffffff03 50%,transparent 80%)}
+.page{width:min(100%,520px);min-height:100vh;min-height:100svh;margin:auto;padding:32px 16px 22px;display:flex;flex-direction:column}
+.header{text-align:center;margin-bottom:25px}
+.logo{display:inline-block;margin:0;color:#fff;font-size:clamp(29px,8vw,43px);font-weight:950;letter-spacing:3px;text-shadow:0 0 20px #6778ff55}
+.sub{margin-top:7px;color:#8f96bd;font-size:11px;letter-spacing:3px;font-weight:700}
+.glowline{width:115px;height:3px;margin:13px auto 0;border-radius:99px;background:linear-gradient(90deg,#586dff,#8e56e8,#27d7c4);box-shadow:0 0 16px #6575ff88}
+.servers{display:flex;flex-direction:column;gap:17px}
+.server{cursor:pointer;position:relative;overflow:hidden;display:block;text-decoration:none;color:#fff;padding:21px;border-radius:25px;background:linear-gradient(145deg,#20213cdd,#19182bde);border:1px solid #6674e04f;box-shadow:0 16px 38px #0008,inset 0 1px 0 #ffffff0c}
+.server:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#6578ff,#36d6c4,transparent);opacity:.8}
+.server:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-35px;top:-45px;background:#6376ff15;filter:blur(2px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+.info{display:flex;align-items:center;gap:14px;min-width:0}
+.icon{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#6378ff,#4b58c8);box-shadow:0 8px 22px #4f63ff35;font-size:24px}
+.name{font-size:19px;font-weight:900;letter-spacing:.3px}
+.url{margin-top:5px;color:#8f92aa;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:255px}
+.open{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:#ffffff09;border:1px solid #ffffff12;color:#aeb7ff;font-size:22px}
+.meta{display:flex;gap:25px;margin-top:17px;padding-top:13px;border-top:1px solid #ffffff0c;position:relative;z-index:1}
+.item{font-size:10px;color:#777c98;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.item b{display:block;margin-top:4px;font-size:12px;color:#20d8b8;letter-spacing:.2px}
+.badge{margin-left:auto;color:#20d8b8}
+.footer{margin-top:auto;padding-top:32px;text-align:center;color:#777b96;font-size:11px;letter-spacing:1.5px}
+.footer strong{color:#a7adff}
+@media(max-width:380px){.page{padding:26px 13px 18px}.server{padding:18px}.icon{width:48px;height:48px;flex-basis:48px}.url{max-width:205px}}
 
-.servers{width:100%;display:flex;flex-direction:column;gap:16px}
-.server{
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:21px 21px;
-  min-height:125px;
-  border:1px solid #ffbd005e;border-radius:25px;
-  background:linear-gradient(135deg,rgba(29,24,8,.98),rgba(8,8,7,.98));
-  text-decoration:none;color:#fff;
-  box-shadow:0 10px 30px #000b,inset 0 0 30px #ffb30008;
-  transition:transform .18s,border-color .18s,box-shadow .18s;
-}
-.server:before{
-  content:"";position:absolute;left:-25%;top:0;width:22%;height:100%;
-  background:linear-gradient(90deg,transparent,#fff36a,#ffc400,transparent);
-  filter:blur(5px);opacity:.85;
-  animation:scan 2.7s linear infinite;
-  pointer-events:none;
-}
-.server:nth-child(2):before{animation-delay:1.35s}
-.server:after{
-  content:"";position:absolute;inset:0;border-radius:25px;
-  border:1px solid transparent;
-  background:linear-gradient(120deg,#ffd40055,#ff6a0050,#fff00055,#ffd40055) border-box;
-  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  background-size:250% 250%;
-  animation:borderFlow 4s linear infinite;
-  pointer-events:none;
-}
-@keyframes scan{0%{left:-28%;opacity:0}12%{opacity:1}55%{opacity:.9}100%{left:110%;opacity:0}}
-@keyframes borderFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.server:active{transform:scale(.975)}
-.server:hover{border-color:#ffd000;box-shadow:0 0 24px #ffb30022,0 12px 34px #000}
-.left{display:flex;align-items:center;gap:15px;min-width:0;position:relative;z-index:1}
-.bubble{
-  width:49px;height:49px;flex:0 0 49px;border-radius:50%;
-  background:radial-gradient(circle at 32% 27%,#fff5a1 0,#ffd11a 28%,#ff9700 58%,#9b4a00 100%);
-  box-shadow:0 0 17px #ffc40066,0 0 34px #ff8c0025;
-  animation:pulse 2s ease-in-out infinite;
-}
-.server:nth-child(2) .bubble{animation-delay:1s}
-@keyframes pulse{50%{box-shadow:0 0 24px #ffe00088,0 0 45px #ff8c0035;transform:scale(1.035)}}
-.name{font-size:18px;font-weight:900;letter-spacing:.7px}
-.url{margin-top:5px;color:#aaa;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
-.status{font-size:11px;margin-top:7px;font-weight:900;letter-spacing:.5px}
-.online{color:#ffd21a;text-shadow:0 0 8px #ffb30055}
-.offline{color:#777}
-.arrow{position:relative;z-index:1;font-size:29px;color:#ffd21a;font-weight:900;text-shadow:0 0 10px #ffb30055}
-.footer{
-  margin-top:22px;
-  padding:12px 18px;
-  border-top:1px solid #ffcf1740;
-  color:#ffd21a;font-size:12px;font-weight:900;letter-spacing:2px;text-align:center;
-  text-shadow:0 0 10px #ffb30055;
-}
-@media(max-width:380px){
-  .page{padding:26px 14px 20px}
-  .title{margin-bottom:27px}
-  .server{padding:19px 17px;min-height:118px}
-  .url{max-width:205px}
-}
+
 </style>
 </head>
 <body>
 <main class="page">
-  <div class="title-wrap"><h1 class="title">SIGMA-TECH</h1></div>
+<header class="header">
+<h1 class="logo">SIGMA-TECH</h1>
+<div class="sub">PREMIUM SERVER HUB</div>
+<div class="glowline"></div>
+</header>
 
-  <section class="servers" aria-label="Servers">
-    <a class="server" href="sigma-md.up.railway.app" target="_blank" rel="noopener noreferrer">
-      <div class="left">
-        <span class="bubble"></span>
-        <div>
-          <div class="name">SERVER 1</div>
-          <div class="url">sigma-md.up.railway.app</div>
-          <div class="status online">● ONLINE</div>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
 
-    <a class="server" href="https://sigma-md2.up.railway.app" target="_blank" rel="noopener noreferrer">
-      <div class="left">
-        <span class="bubble"></span>
-        <div>
-          <div class="name">SERVER 2</div>
-          <div class="url">sigma-md2.up.railway.app</div>
-          <div class="status online">● ONLINE</div>
-        </div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
-  </section>
 
-  <footer class="footer">CREATED: SIGMA-MD</footer>
+<section class="servers">
+<a class="server" href="https://sigma-md.up.railway.app" target="_blank" rel="noopener noreferrer">
+<div class="top"><div class="info"><div class="icon">⚡</div><div><div class="name">SIGMA SERVER 01</div><div class="url">sigma-md.up.railway.app</div></div></div><div class="open">›</div></div>
+<div class="meta"><div class="item">STATUS<b>● ACTIVE</b></div><div class="item">TYPE<b>RAILWAY</b></div><div class="item badge">ACCESS<b>OPEN</b></div></div>
+</a>
+<a class="server" href="https://sigma-md2.up.railway.app" target="_blank" rel="noopener noreferrer">
+<div class="top"><div class="info"><div class="icon">⚡</div><div><div class="name">SIGMA SERVER 02</div><div class="url">sigma-md2.up.railway.app</div></div></div><div class="open">›</div></div>
+<div class="meta"><div class="item">STATUS<b>● ACTIVE</b></div><div class="item">TYPE<b>RAILWAY</b></div><div class="item badge">ACCESS<b>OPEN</b></div></div>
+</a>
+</section>
+<footer class="footer">CREATED: <strong>SIGMA-MD</strong></footer>
 </main>
+
+
 </body>
 </html>
