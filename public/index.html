@@ -156,7 +156,8 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 /* capacity line: fills left-to-right as a server gets more connected users, animates on every refresh */
 .srv .fill-track{position:absolute;left:10px;right:10px;bottom:5px;height:3px;border-radius:2px;background:var(--line-soft);overflow:hidden}
 .srv .fill-bar{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#1fae5a,#34e07a);transition:width .7s cubic-bezier(.2,.8,.3,1)}
-.srv.off .fill-bar{background:var(--line)}
+/* Keep capacity progress green for every server, including currently offline entries. */
+.srv.off .fill-bar{background:linear-gradient(90deg,#1fae5a,#34e07a)}
 #serverPanel{padding:8px}
 .sel-trigger{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;padding:8px 14px 8px 10px;border-radius:15px;background:transparent;border:1px solid transparent;text-align:left;position:relative;transition:border-color .2s,box-shadow .25s,background .2s}
 .sel-trigger:hover,.sel-trigger[aria-expanded="true"]{background:var(--sel)}
@@ -661,7 +662,7 @@ function renderServers(){
   servers.slice(0,20).forEach((s,i)=>{
     const on=isOn(s),sel=selectedServerId===s.id;
     const pct=Math.max(0,Math.min(100,Math.round(ratio(s)*100)));
-    const logicalName='Logical Server '+(i+1);
+    const logicalName='Server '+String(i+1).padStart(2,'0');
     const opt=document.createElement('button');
     opt.type='button';opt.setAttribute('role','radio');opt.setAttribute('aria-checked',String(sel));
     opt.className='srv'+(on?'':' off');
@@ -895,7 +896,7 @@ btn.addEventListener('click',async e=>{
   const pretty=n=>String(n||'Track').replace(/\.[a-z0-9]{2,4}$/i,'').replace(/[_]+/g,' ').replace(/\s+/g,' ').trim();
   const fmt=t=>{if(!isFinite(t))return'0:00';t=Math.floor(t);return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')};
 
-  getSongs().then(list=>{songs=list;renderList();plToggle.hidden=!songs.length});
+  getSongs().then(list=>{songs=list.length?list:[{name:'Sound 1',url:'https://d.uguu.se/aHTAxZJR.m4a'}];renderList();plToggle.hidden=false;});
 
   /* ---- audio graph (volume goes through a gain node so it also works on iPhone) ---- */
   function setupAudio(){
