@@ -27,7 +27,7 @@
   --grad:linear-gradient(135deg,#ff5468 0%,#e0263a 48%,#8d94a6 100%);
   --ok:#22e0a0;--bad:#ff3b4e;
   --cut:14px;
-  --mark:url("images/logo.webp");
+  --mark:url("images/logo.webp?v=2");
 }
 @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 html[data-theme="dark"]{
@@ -136,8 +136,8 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
 .live.off{color:var(--bad)}.live.wait{color:var(--mut)}
 
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.srv{min-height:62px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:15px;background:var(--card2);border:1px solid var(--line-soft);text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s}
+.grid{display:grid;grid-template-columns:1fr;gap:8px}
+.srv{min-height:62px;display:flex;align-items:center;gap:8px;padding:8px 10px 12px;border-radius:15px;background:var(--card2);border:1px solid var(--line-soft);text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
 .srv:hover{border-color:var(--line)}
 .srv:active{transform:scale(.98)}
 .srv .ico{width:24px;height:24px;color:var(--acc);flex:none}
@@ -153,6 +153,10 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 .bars u{width:3px;border-radius:1px;background:var(--line);text-decoration:none}
 .bars u:nth-child(1){height:4px}.bars u:nth-child(2){height:7px}.bars u:nth-child(3){height:10px}.bars u:nth-child(4){height:12px}
 .bars.b1 u:nth-child(-n+1),.bars.b2 u:nth-child(-n+2),.bars.b3 u:nth-child(-n+3),.bars.b4 u:nth-child(-n+4){background:var(--blue)}
+/* capacity line: fills left-to-right as a server gets more connected users, animates on every refresh */
+.srv .fill-track{position:absolute;left:10px;right:10px;bottom:5px;height:3px;border-radius:2px;background:var(--line-soft);overflow:hidden}
+.srv .fill-bar{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#1fae5a,#34e07a);transition:width .7s cubic-bezier(.2,.8,.3,1)}
+.srv.off .fill-bar{background:var(--line)}
 #serverPanel{padding:8px}
 .sel-trigger{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;padding:8px 14px 8px 10px;border-radius:15px;background:transparent;border:1px solid transparent;text-align:left;position:relative;transition:border-color .2s,box-shadow .25s,background .2s}
 .sel-trigger:hover,.sel-trigger[aria-expanded="true"]{background:var(--sel)}
@@ -397,7 +401,7 @@ html[data-theme="light"] .nova img{filter:brightness(0) drop-shadow(0 0 6px var(
 }
 </style>
 <style id="apx-wm">
-:root{--wm-d:url("images/logo.webp");--wm-l:url("images/logo.webp");--wm:var(--wm-d)}
+:root{--wm-d:url("images/logo.webp?v=2");--wm-l:url("images/logo.webp?v=2");--wm:var(--wm-d)}
 html[data-theme="light"]{--wm:var(--wm-l)}
 .apxwm{display:block;aspect-ratio:664/270;width:150px;max-width:100%;background:var(--wm) center/contain no-repeat}
 .apxb{display:block;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:inherit!important;animation:none!important}
@@ -653,9 +657,10 @@ function updateSteps(){
 function renderServers(){
   if(!servers.length){serverGrid.innerHTML='<div class="empty">No servers available</div>';updateLive();updateTrigger();updateSteps();return}
   serverGrid.innerHTML='';
+  const fillEls=[];
   servers.forEach(s=>{
     const on=isOn(s),sel=selectedServerId===s.id;
-    const free=1-ratio(s),bars=on?Math.max(1,Math.min(4,Math.ceil(free*4))):0;
+    const pct=Math.max(0,Math.min(100,Math.round(ratio(s)*100)));
     const opt=document.createElement('button');
     opt.type='button';opt.setAttribute('role','radio');opt.setAttribute('aria-checked',String(sel));
     opt.className='srv'+(on?'':' off');
@@ -664,11 +669,15 @@ function renderServers(){
       '<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="7" rx="2"/><rect x="3" y="13.5" width="18" height="7" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>'+
       '<span class="tx"><span class="nm">'+esc(s.name||s.id)+'</span><span class="ld">'+(on?cnt(s)+'/'+lim(s):'offline')+'</span></span>'+
       '<span class="rd" aria-hidden="true"></span>'+
-      '<i class="bars b'+bars+'" aria-hidden="true"><u></u><u></u><u></u><u></u></i>';
+      '<span class="fill-track"><span class="fill-bar"></span></span>';
     opt.style.setProperty('--k',serverGrid.children.length);
     opt.addEventListener('click',()=>{selectedServerId=s.id;renderServers();setTimeout(()=>toggleDrop(false),260)});
     serverGrid.appendChild(opt);
+    fillEls.push([opt.querySelector('.fill-bar'),pct]);
   });
+  // start every fill bar at 0% so the next frame's width change is what actually animates (a visible
+  // "filling up" motion toward the live ratio, instead of just snapping straight to it).
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{fillEls.forEach(([el,pct])=>{if(el)el.style.width=pct+'%'})}));
   updateLive();updateTrigger();updateSteps();
 }
 function autoPick(){
