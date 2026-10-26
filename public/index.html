@@ -137,10 +137,10 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 .live.off{color:var(--bad)}.live.wait{color:var(--mut)}
 
 .grid{display:grid;grid-template-columns:1fr;gap:12px}
-.srv{min-height:116px;display:flex;align-items:center;gap:16px;padding:14px 18px 22px;border-radius:20px;background:linear-gradient(110deg,rgba(0,0,0,.88),rgba(5,15,12,.96));border:1px solid rgba(255,210,31,.72);text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
+.srv{min-height:104px;display:flex;align-items:center;gap:13px;padding:11px 14px 20px;border-radius:20px;background:linear-gradient(110deg,rgba(0,0,0,.88),rgba(5,15,12,.96));border:1px solid rgba(255,210,31,.72);text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
 .srv:hover{border-color:#ffe34d;box-shadow:0 0 18px rgba(255,210,31,.12)}
 .srv:active{transform:scale(.98)}
-.srv .ico{width:76px;height:76px;padding:17px;border-radius:17px;color:#ffe500;background:rgba(255,210,31,.10);flex:none;stroke:currentColor;stroke-width:1.8;filter:drop-shadow(0 0 5px rgba(255,210,31,.18))}
+.srv .ico{width:62px;height:62px;padding:13px;border-radius:17px;color:#ffe500;background:rgba(255,210,31,.10);flex:none;stroke:currentColor;stroke-width:1.8;filter:drop-shadow(0 0 5px rgba(255,210,31,.18))}
 .srv .nm{display:block;font-weight:800;font-size:19px;color:#f5f5f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin-bottom:5px}
 .srv .ld{position:static;left:auto;top:auto;transform:none;width:auto;text-align:inherit;animation:none;display:block;font-size:16px;color:#79e6d2;font-family:var(--f-mono);font-weight:700;margin-top:5px}
 .srv .tx{min-width:0;flex:1;padding-right:28px}
@@ -148,7 +148,7 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 .srv .status{display:block;font-size:15px;color:#00e676;font-weight:700;margin-top:1px}
 .srv .status::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:#00e676;box-shadow:0 0 10px #00e676;margin-right:8px}
 .srv.off .status{color:#ffb52e}.srv.off .status::before{background:#ffb52e;box-shadow:0 0 8px #ffb52e}
-.srv .percent{position:absolute;right:18px;bottom:27px;font-size:20px;font-weight:800;color:#f4f4f4;font-family:var(--f-display)}
+.srv .percent{position:absolute;right:14px;bottom:23px;font-size:17px;font-weight:800;color:#f4f4f4;font-family:var(--f-display)}
 .srv[aria-checked="true"]{border-color:var(--blue);background:var(--sel);box-shadow:0 0 0 1px var(--blue),0 0 22px var(--glow)}
 .srv[aria-checked="true"] .rd{background:var(--blue);border-color:var(--blue)}
 .srv[aria-checked="true"] .rd::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
@@ -158,11 +158,11 @@ h1 i{font-style:normal;background:var(--gtx);background-size:220% 100%;-webkit-b
 .bars u:nth-child(1){height:4px}.bars u:nth-child(2){height:7px}.bars u:nth-child(3){height:10px}.bars u:nth-child(4){height:12px}
 .bars.b1 u:nth-child(-n+1),.bars.b2 u:nth-child(-n+2),.bars.b3 u:nth-child(-n+3),.bars.b4 u:nth-child(-n+4){background:var(--blue)}
 /* capacity line: fills left-to-right as a server gets more connected users, animates on every refresh */
-.srv .fill-track{position:absolute;left:18px;right:92px;bottom:10px;height:7px;border-radius:2px;background:var(--line-soft);overflow:hidden}
-.srv .fill-bar{height:100%;width:0%;border-radius:8px;background:linear-gradient(90deg,#00d96b,#00ff75);box-shadow:0 0 9px rgba(0,255,117,.25);transition:width .7s cubic-bezier(.2,.8,.3,1)}
+.srv .fill-track{position:absolute;left:91px;right:68px;bottom:9px;height:6px;border-radius:99px;max-width:230px;background:var(--line-soft);overflow:hidden}
+.srv .fill-bar{display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#00d96b,#00ff75);box-shadow:0 0 9px rgba(0,255,117,.25);transition:width .7s cubic-bezier(.2,.8,.3,1)}
 /* Keep capacity progress green for every server, including currently offline entries. */
 .srv.off .fill-bar{background:linear-gradient(90deg,#1fae5a,#34e07a)}
-@media(max-width:420px){.srv{gap:12px;padding:12px 12px 22px;min-height:108px}.srv .ico{width:64px;height:64px;padding:14px}.srv .nm{font-size:17px}.srv .ld{font-size:14px}.srv .percent{right:12px;font-size:17px}.srv .fill-track{left:12px;right:78px}}
+@media(max-width:420px){.srv{gap:10px;padding:10px 10px 20px;min-height:98px}.srv .ico{width:54px;height:54px;padding:11px}.srv .nm{font-size:16px}.srv .ld{font-size:13px}.srv .percent{right:10px;bottom:22px;font-size:15px}.srv .fill-track{left:75px;right:58px;max-width:180px}}
 #serverPanel{padding:8px}
 .sel-trigger{width:100%;min-height:64px;display:flex;align-items:center;gap:12px;padding:8px 14px 8px 10px;border-radius:15px;background:transparent;border:1px solid transparent;text-align:left;position:relative;transition:border-color .2s,box-shadow .25s,background .2s}
 .sel-trigger:hover,.sel-trigger[aria-expanded="true"]{background:var(--sel)}
@@ -537,16 +537,7 @@ html[data-theme="light"]{--wm:var(--wm-l)}
     
   </footer>
 
-  <section class="seo">
-    <h2>What is SIGMA MD?</h2>
-    <p>SIGMA MD is a WhatsApp bot that connects to your account with a pairing code, so you don't need to scan a QR code.</p>
-    <h2>How to get your pairing code</h2>
-    <ol>
-      <li>Select an online server.</li>
-      <li>Enter your WhatsApp number with country code.</li>
-      <li>Tap Generate pairing code, then tap the code to copy it.</li>
-    </ol>
-  </section>
+
 </div>
 
 <dialog class="about" id="about" aria-labelledby="aboutT">
@@ -630,9 +621,17 @@ about.addEventListener('click',e=>{if(e.target===about)about.close()});
 /* ---- servers ---- */
 let servers=[],selectedServerId=null,currentCode=null,autoPicked=false;
 const isOn=s=>s.healthy!==false&&s.active!==false;
-const cnt=s=>s.count??s.lastKnownCount??0;
-const lim=s=>s.limit??s.lastKnownLimit??50;
-const ratio=s=>lim(s)?cnt(s)/lim(s):1;
+const numericCount=v=>{
+  if(typeof v==='number') return Number.isFinite(v)?v:0;
+  if(typeof v==='string'){
+    const m=v.replace(/,/g,'').match(/\d+(?:\.\d+)?/);
+    return m?Number(m[0]):0;
+  }
+  return 0;
+};
+const cnt=s=>numericCount(s.count??s.lastKnownCount??s.connectedUsers??s.users??0);
+const lim=s=>Math.max(1,numericCount(s.limit??s.lastKnownLimit??s.capacity??500));
+const ratio=s=>Math.max(0,Math.min(1,cnt(s)/lim(s)));
 
 function updateLive(){
   const on=servers.filter(isOn).length;
