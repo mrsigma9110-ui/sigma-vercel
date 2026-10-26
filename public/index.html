@@ -405,6 +405,22 @@ html[data-theme="light"] .nova img{filter:brightness(0) drop-shadow(0 0 6px var(
   .emblem{width:110px;height:110px}.eyebrow{letter-spacing:1.5px;font-size:9px}.hero p{letter-spacing:1.4px;font-size:10px}
   .gen .lbl{font-size:11.5px;letter-spacing:1.4px}.cc{min-width:96px}.brand b{font-size:17px}
 }
+
+/* Compact server selector: three short cards per row, matching the supplied reference. */
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.srv{min-width:0;min-height:142px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:5px;padding:9px 8px 23px;border-radius:13px}
+.srv .ico{width:32px;height:32px;padding:6px;border-radius:9px}
+.srv .tx{flex:none;width:100%;min-width:0;padding:0}
+.srv .nm{font-size:11px;line-height:1.2;white-space:nowrap;margin:0 0 4px}
+.srv .status{font-size:10px;line-height:1.2;margin-top:0;white-space:nowrap}
+.srv .status::before{width:6px;height:6px;margin-right:4px;vertical-align:1px}
+.srv .ld{font-size:10px;line-height:1.25;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.srv .rd{top:8px;right:7px;width:12px;height:12px}
+.srv[aria-checked="true"] .rd::after{width:3px;height:6px}
+.srv .percent{right:8px;bottom:7px;font-size:10px;line-height:1.2}
+.srv .fill-track{left:8px;right:38px;bottom:10px;height:4px;max-width:none}
+@media(max-width:380px){.grid{gap:6px}.srv{min-height:136px;padding:8px 6px 22px}.srv .nm{font-size:10px}.srv .ld{font-size:9px}.srv .percent{font-size:9px}.srv .fill-track{right:32px}}
+
 </style>
 <style id="apx-wm">
 :root{--wm-d:url("images/logo.webp?v=2");--wm-l:url("images/logo.webp?v=2");--wm:var(--wm-d)}
@@ -629,8 +645,8 @@ const numericCount=v=>{
   }
   return 0;
 };
-const cnt=s=>numericCount(s.count??s.lastKnownCount??s.connectedUsers??s.users??0);
-const lim=s=>Math.max(1,numericCount(s.limit??s.lastKnownLimit??s.capacity??500));
+const cnt=s=>numericCount(s.count??s.lastKnownCount??s.connectedUsers??s.connected_users??s.usersConnected??s.users_connected??s.activeUsers??s.active_users??s.connections??s.sessions??s.users??0);
+const lim=s=>Math.max(1,numericCount(s.limit??s.lastKnownLimit??s.capacity??s.maxUsers??s.max_users??s.maxConnections??s.max_connections??500));
 const ratio=s=>Math.max(0,Math.min(1,cnt(s)/lim(s)));
 
 function updateLive(){
