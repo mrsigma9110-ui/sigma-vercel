@@ -406,31 +406,25 @@ html[data-theme="light"] .nova img{filter:brightness(0) drop-shadow(0 0 6px var(
   .gen .lbl{font-size:11.5px;letter-spacing:1.4px}.cc{min-width:96px}.brand b{font-size:17px}
 }
 
-/* Server cards: keep three per row; use the requested dark box with yellow accents and no red outline. */
+/* Server cards: 3 per row, compact style (icon, name, users/limit, signal bars, round tick). Yellow accents. */
 .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.srv{min-width:0;min-height:116px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:7px;padding:9px 26px 18px 9px;border-radius:20px;background:linear-gradient(145deg,rgba(24,23,16,.98),rgba(12,13,19,.98));border:1px solid transparent;box-shadow:none;text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
-.srv:hover{border-color:transparent;box-shadow:0 0 16px rgba(255,210,31,.14)}
+.srv{min-width:0;min-height:76px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:6px;padding:10px 8px;border-radius:16px;background:linear-gradient(145deg,rgba(24,23,16,.96),rgba(12,13,19,.96));border:1.5px solid rgba(255,255,255,.07);box-shadow:none;text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
+.srv:hover{border-color:rgba(255,210,31,.35)}
 .srv:active{transform:scale(.98)}
-.srv .ico{width:39px;height:42px;padding:8px;border-radius:12px;color:#ffe500;background:rgba(255,210,31,.10);border:0;flex:none;stroke:currentColor;stroke-width:1.8;filter:drop-shadow(0 0 5px rgba(255,210,31,.18))}
-.srv .tx{min-width:0;flex:1;padding-right:0;align-self:center}
-.srv .nm{display:block;font-weight:800;font-size:11.5px;line-height:1.2;color:#f4f2f6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin:0 0 3px}
-.srv .status{display:block;font-size:8.5px;line-height:1.2;color:#9ce8bd;font-weight:650;margin-top:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.srv .status::before{width:5px;height:5px;margin-right:4px;vertical-align:1px;background:#55e89b;box-shadow:0 0 7px rgba(85,232,155,.65)}
-.srv.off .status{color:#ffcf5b}.srv.off .status::before{background:#ffb52e;box-shadow:0 0 7px rgba(255,181,46,.55)}
-.srv .ld{position:static;left:auto;top:auto;transform:none;width:auto;text-align:inherit;animation:none;display:block;font-size:11px;line-height:1.2;color:#d3ccd9;font-family:var(--f-mono);font-weight:700;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.srv .rd{position:absolute;top:8px;right:8px;width:17px;height:17px;border-radius:50%;border:1.5px solid #c1bcc9;display:grid;place-items:center;background:rgba(10,11,16,.55)}
-.srv[aria-checked="true"]{border-color:transparent;background:linear-gradient(145deg,rgba(47,40,19,.98),rgba(17,16,13,.98));box-shadow:0 0 18px rgba(255,210,31,.18)}
+.srv .ico{width:28px;height:30px;padding:5px;border-radius:9px;color:#ffe500;background:none;border:0;flex:none;stroke:currentColor;stroke-width:1.9;filter:drop-shadow(0 0 4px rgba(255,210,31,.25))}
+.srv .tx{min-width:0;flex:1;padding:0;align-self:center}
+.srv .nm{display:block;font-weight:800;font-size:11px;line-height:1.2;color:#f4f2f6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin:0 0 4px}
+.srv .ld{position:static;transform:none;width:auto;animation:none;display:block;font-size:11px;line-height:1.2;color:#cfc9d6;font-family:var(--f-mono);font-weight:700;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.srv .rd{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;border:1.5px solid #b9b3c2;display:grid;place-items:center;background:rgba(10,11,16,.55)}
+.srv .bars{position:absolute;right:7px;bottom:7px;display:flex;align-items:flex-end;gap:2px;height:13px}
+.srv .bars u{width:3px;border-radius:1px;background:rgba(255,255,255,.14)}
+.srv .bars.b1 u:nth-child(-n+1),.srv .bars.b2 u:nth-child(-n+2),.srv .bars.b3 u:nth-child(-n+3),.srv .bars.b4 u:nth-child(-n+4){background:#ffe500;box-shadow:0 0 4px rgba(255,210,31,.45)}
+.srv[aria-checked="true"]{border-color:#ffd21f;background:linear-gradient(145deg,rgba(47,40,19,.98),rgba(17,16,13,.98));box-shadow:0 0 16px rgba(255,210,31,.22)}
 .srv[aria-checked="true"] .rd{background:#e6a800;border-color:#ffe34d}
 .srv[aria-checked="true"] .rd::after{content:"";width:4px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.srv.off{opacity:.72}
-.srv .percent{position:absolute;right:28px;bottom:3px;font-size:8px;line-height:1.2;font-weight:800;color:#ffe34d;font-family:var(--f-display)}
-.srv::after{content:"";position:absolute;right:7px;bottom:6px;width:16px;height:15px;background:linear-gradient(#ffe500,#ffe500) 0 100%/4px 5px no-repeat,linear-gradient(#ffe500,#ffe500) 6px 100%/4px 9px no-repeat,linear-gradient(#ffe500,#ffe500) 12px 100%/4px 14px no-repeat;filter:drop-shadow(0 0 3px rgba(255,210,31,.45))}
-.srv .fill-track{position:absolute;left:8px;right:51px;bottom:8px;height:3px;border-radius:99px;max-width:none;background:rgba(255,210,31,.16);overflow:hidden}
-.srv .fill-bar{display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#e6a800,#ffe34d);box-shadow:0 0 8px rgba(255,210,31,.38);transition:width .7s cubic-bezier(.2,.8,.3,1)}
-.srv.off .fill-bar{background:linear-gradient(90deg,#d49b00,#ffd22e)}
-@media(max-width:420px){.grid{gap:6px}.srv{min-height:108px;gap:5px;padding:8px 23px 18px 7px;border-radius:17px}.srv .ico{width:34px;height:37px;padding:7px;border-radius:10px}.srv .nm{font-size:9.5px}.srv .status{font-size:7.5px}.srv .ld{font-size:9.5px}.srv .rd{top:7px;right:6px;width:15px;height:15px}.srv .percent{right:26px;bottom:3px;font-size:7px}.srv .fill-track{left:7px;right:46px;bottom:7px}}
-@media(max-width:380px){.srv{min-height:104px;padding:7px 21px 18px 6px}.srv .ico{width:30px;height:34px;padding:6px}.srv .nm{font-size:8.5px}.srv .status{font-size:7px}.srv .ld{font-size:8.5px}.srv .percent{right:23px;font-size:6px}.srv .fill-track{right:42px}}
-
+.srv.off{opacity:.6}
+@media(max-width:420px){.grid{gap:6px}.srv{min-height:70px;gap:5px;padding:9px 6px;border-radius:14px}.srv .ico{width:24px;height:27px;padding:4px}.srv .nm{font-size:10px}.srv .ld{font-size:10px}.srv .rd{top:5px;right:5px;width:14px;height:14px}}
+@media(max-width:360px){.srv .nm{font-size:9px}.srv .ld{font-size:9px}.srv .ico{width:21px}}
 </style>
 <style id="apx-wm">
 :root{--wm-d:url("images/logo.webp?v=2");--wm-l:url("images/logo.webp?v=2");--wm:var(--wm-d)}
@@ -656,7 +650,7 @@ const numericCount=v=>{
   return 0;
 };
 const cnt=s=>numericCount(s.count??s.lastKnownCount??s.connectedUsers??s.connected_users??s.usersConnected??s.users_connected??s.activeUsers??s.active_users??s.connections??s.sessions??s.users??0);
-const lim=s=>Math.max(1,numericCount(s.limit??s.lastKnownLimit??s.capacity??s.maxUsers??s.max_users??s.maxConnections??s.max_connections??500));
+const lim=s=>Math.max(1,numericCount(s.limit??s.lastKnownLimit??s.capacity??s.maxUsers??s.max_users??s.maxConnections??s.max_connections??50));
 const ratio=s=>Math.max(0,Math.min(1,cnt(s)/lim(s)));
 
 function updateLive(){
@@ -670,7 +664,7 @@ function updateTrigger(){
   const trig=$('srvTrigger'),bars=$('srvBars');
   if(!s){trig.classList.remove('picked');$('srvName').textContent='Select a server';$('srvMeta').textContent=servers.length?'Tap to choose':'Tap to load servers';bars.className='bars';return}
   const on=isOn(s),free=1-ratio(s),n=on?Math.max(1,Math.min(4,Math.ceil(free*4))):0;
-  trig.classList.add('picked');$('srvName').textContent=s.name||s.id;
+  trig.classList.add('picked');$('srvName').textContent='Server '+String(servers.indexOf(s)+1).padStart(2,'0');
   $('srvMeta').textContent=(on?cnt(s)+'/'+lim(s)+' · online':'offline');bars.className='bars b'+n;
 }
 let dropOpen=false;
@@ -688,29 +682,23 @@ function updateSteps(){
 function renderServers(){
   if(!servers.length){serverGrid.innerHTML='<div class="empty">No servers available</div>';updateLive();updateTrigger();updateSteps();return}
   serverGrid.innerHTML='';
-  const fillEls=[];
-  servers.slice(0,20).forEach((s,i)=>{
+  servers.forEach((s,i)=>{
     const on=isOn(s),sel=selectedServerId===s.id;
-    const pct=Math.max(0,Math.min(100,Math.round(ratio(s)*100)));
     const logicalName='Server '+String(i+1).padStart(2,'0');
     const opt=document.createElement('button');
     opt.type='button';opt.setAttribute('role','radio');opt.setAttribute('aria-checked',String(sel));
     opt.className='srv'+(on?'':' off');
     opt.setAttribute('aria-label',logicalName+', '+cnt(s)+' of '+lim(s)+' sessions, '+(on?'online':'offline'));
+    const free=1-ratio(s),nb=on?Math.max(1,Math.min(4,Math.ceil(free*4))):0;
     opt.innerHTML=
       '<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="5.5" rx="1.8"/><rect x="3" y="10.5" width="18" height="5.5" rx="1.8"/><rect x="3" y="17.5" width="18" height="3.5" rx="1.5"/><path d="M6 6.2h.01M6 13.2h.01M6 19.2h.01"/></svg>'+
-      '<span class="tx"><span class="nm">'+esc(logicalName)+'</span><span class="status">'+(on?'Online':'Offline')+'</span><span class="ld">'+cnt(s)+'/'+lim(s)+'</span></span>'+
-      '<span class="percent">'+pct+'%</span>'+
+      '<span class="tx"><span class="nm">'+esc(logicalName)+'</span><span class="ld">'+cnt(s)+'/'+lim(s)+'</span></span>'+
       '<span class="rd" aria-hidden="true"></span>'+
-      '<span class="fill-track"><span class="fill-bar"></span></span>';
+      '<i class="bars b'+nb+'" aria-hidden="true"><u></u><u></u><u></u><u></u></i>';
     opt.style.setProperty('--k',serverGrid.children.length);
     opt.addEventListener('click',()=>{selectedServerId=s.id;renderServers();setTimeout(()=>toggleDrop(false),260)});
     serverGrid.appendChild(opt);
-    fillEls.push([opt.querySelector('.fill-bar'),pct]);
   });
-  // start every fill bar at 0% so the next frame's width change is what actually animates (a visible
-  // "filling up" motion toward the live ratio, instead of just snapping straight to it).
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{fillEls.forEach(([el,pct])=>{if(el)el.style.width=pct+'%'})}));
   updateLive();updateTrigger();updateSteps();
 }
 function autoPick(){
