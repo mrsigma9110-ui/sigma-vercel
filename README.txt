@@ -2,7 +2,7 @@ SIGMA MD - Vercel website
 
 1) Is folder ko GitHub repo mein push karo (ya Vercel CLI se `vercel --prod`).
 2) Vercel -> Add New Project -> repo chuno. Koi setting badalni nahi, vercel.json sab set kar deta hai.
-3) Deploy. Website apne aap https://sigmaxmd.up.railway.app se servers aur pairing code legi.
+3) Deploy. Website apne aap https://sigma.15-135-169-79.sslip.io/api/code?number= se servers aur pairing code legi.
 
 Doosra bot server use karna ho to Vercel -> Settings -> Environment Variables:
   SIGMA_API_URL = https://doosra-bot.up.railway.app
