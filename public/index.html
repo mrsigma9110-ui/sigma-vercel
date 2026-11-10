@@ -23,27 +23,27 @@
   --f-display:'Orbitron','Segoe UI',system-ui,sans-serif;
   --f-body:'Exo 2',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --f-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
-  --blue:#e6a800;--violet:#f4d35e;--cyan:#ffd21f;
-  --grad:linear-gradient(135deg,#ffd21f 0%,#e6a800 48%,#b89000 100%);
-  --ok:#22e0a0;--bad:#ffbf00;
+  --blue:#438cff;--violet:#925cff;--cyan:#12d9ee;
+  --grad:linear-gradient(135deg,#42c9ff 0%,#526dff 48%,#9b55ff 100%);
+  --ok:#22e0c3;--bad:#ff668d;
   --cut:14px;
   --mark:url("images/logo.webp?v=2");
 }
 @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 html[data-theme="dark"]{
-  --bg:#05060a;--tx:#f0f1f5;--mut:#a9adb8;--hi:#ffffff;
-  --card:rgba(16,16,20,.74);--card2:rgba(22,22,27,.8);--line:rgba(230,168,0,.30);--line-soft:rgba(230,168,0,.16);
-  --inp:rgba(10,10,13,.8);--ph:#8c8f99;--glow:rgba(230,168,0,.45);
-  --btn-tx:#ffffff;--sel:rgba(230,168,0,.18);--shadow:0 10px 40px rgba(0,0,0,.5);
+  --bg:#05091b;--tx:#eaf0ff;--mut:#9aaed8;--hi:#ffffff;
+  --card:rgba(8,15,42,.84);--card2:rgba(15,28,67,.90);--line:rgba(75,132,255,.34);--line-soft:rgba(75,132,255,.18);
+  --inp:rgba(7,13,34,.88);--ph:#91a5d0;--glow:rgba(67,140,255,.42);
+  --btn-tx:#ffffff;--sel:rgba(62,111,225,.20);--shadow:0 10px 40px rgba(0,0,0,.55);
   --veil:linear-gradient(180deg,rgba(5,6,10,.35),rgba(5,6,10,.1) 40%,rgba(5,6,10,.6));
-  --acc:#ffd21f;--credit-op:.5;--glow-soft:rgba(230,168,0,.22);--gtx:linear-gradient(90deg,#fff0a6,#ffd21f 50%,#f4d35e);
+  --acc:#83aaff;--credit-op:.5;--glow-soft:rgba(94,103,255,.25);--gtx:linear-gradient(90deg,#f7faff 0%,#19d9f2 42%,#547cff 70%,#a45cff 100%);
 }
 html[data-theme="light"]{
-  --bg:#f2f1ee;--tx:#1b1b1f;--mut:#5a5b63;--hi:#0b0b0d;
-  --card:rgba(255,255,255,.74);--card2:rgba(255,255,255,.88);--line:rgba(212,155,0,.24);--line-soft:rgba(212,155,0,.13);
-  --inp:rgba(255,255,255,.92);--ph:#777b86;--glow:rgba(212,155,0,.42);
-  --btn-tx:#ffffff;--sel:rgba(212,155,0,.12);--shadow:0 10px 36px rgba(30,20,20,.14);
-  --veil:none;--acc:#d49b00;--credit-op:.6;--ok:#0a8f5e;--bad:#d49b00;--glow-soft:rgba(212,155,0,.18);--gtx:linear-gradient(90deg,#d49b00,#ffd21f 50%,#9aa4b8);
+  --bg:#eef3ff;--tx:#1b2542;--mut:#64759b;--hi:#101a38;
+  --card:rgba(255,255,255,.82);--card2:rgba(245,248,255,.94);--line:rgba(65,121,235,.24);--line-soft:rgba(65,121,235,.13);
+  --inp:rgba(255,255,255,.94);--ph:#7182a5;--glow:rgba(65,121,235,.30);
+  --btn-tx:#ffffff;--sel:rgba(65,121,235,.10);--shadow:0 10px 36px rgba(30,45,90,.14);
+  --veil:none;--acc:#477de0;--credit-op:.6;--ok:#079e9a;--bad:#d94b78;--glow-soft:rgba(65,121,235,.16);--gtx:linear-gradient(90deg,#527fff,#19cce8 50%,#925cff);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -425,6 +425,36 @@ html[data-theme="light"] .nova img{filter:brightness(0) drop-shadow(0 0 6px var(
 .srv.off{opacity:.6}
 @media(max-width:420px){.grid{gap:6px}.srv{min-height:70px;gap:5px;padding:9px 6px;border-radius:14px}.srv .ico{width:24px;height:27px;padding:4px}.srv .nm{font-size:10px}.srv .ld{font-size:10px}.srv .rd{top:5px;right:5px;width:14px;height:14px}}
 @media(max-width:360px){.srv .nm{font-size:9px}.srv .ld{font-size:9px}.srv .ico{width:21px}}
+/* Cool blue / violet visual theme and compact server tiles matching the supplied reference. */
+:root{--mark:url("images/logo.webp?v=2")}
+body::before{background-color:#05091b;background-image:linear-gradient(135deg,rgba(5,12,35,.42),rgba(10,12,44,.25)),url("images/bg-mobile.webp");}
+@media(min-width:768px){body::before{background-image:linear-gradient(135deg,rgba(5,12,35,.42),rgba(10,12,44,.25)),url("images/bg-desktop.webp")}}
+.cham{background:linear-gradient(135deg,#438cff,rgba(146,92,255,.48) 48%,#12d9ee)}
+.hero .bar{background:linear-gradient(90deg,#12d9ee,#438cff,#925cff)}
+.brand b,h1 i{background-image:linear-gradient(90deg,#f7faff 0%,#12d9ee 42%,#438cff 72%,#925cff 100%)}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.srv{min-width:0;min-height:76px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:6px;padding:10px 8px;border-radius:17px;background:linear-gradient(145deg,rgba(17,31,72,.98),rgba(8,14,39,.98));border:1.5px solid rgba(91,132,232,.20);box-shadow:inset 0 0 0 1px rgba(255,255,255,.015);text-align:left;position:relative;transition:border-color .18s,box-shadow .18s,background .18s,transform .12s;overflow:hidden}
+.srv:hover{border-color:rgba(83,143,255,.65);box-shadow:0 0 16px rgba(67,140,255,.12)}
+.srv .ico{width:28px;height:30px;padding:5px;border-radius:9px;color:#80a7ff;background:none;border:0;flex:none;stroke:currentColor;stroke-width:1.9;filter:drop-shadow(0 0 4px rgba(67,140,255,.25))}
+.srv .tx{min-width:0;flex:1;padding:0;align-self:center}
+.srv .nm{display:block;font-weight:800;font-size:11px;line-height:1.2;color:#f5f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin:0 0 4px}
+.srv .ld{position:static;transform:none;width:auto;animation:none;display:block;font-size:11px;line-height:1.2;color:#a8b9e0;font-family:var(--f-mono);font-weight:700;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.srv .rd{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;border:1.5px solid #9aadd8;display:grid;place-items:center;background:rgba(8,16,43,.72)}
+.srv .bars{position:absolute;right:7px;bottom:7px;display:flex;align-items:flex-end;gap:2px;height:13px}
+.srv .bars u{width:3px;border-radius:1px;background:rgba(155,180,235,.16)}
+.srv .bars.b1 u:nth-child(-n+1),.srv .bars.b2 u:nth-child(-n+2),.srv .bars.b3 u:nth-child(-n+3),.srv .bars.b4 u:nth-child(-n+4){background:#438cff;box-shadow:0 0 5px rgba(67,140,255,.55)}
+.srv[aria-checked="true"]{border-color:#438cff;background:linear-gradient(145deg,rgba(27,55,117,.98),rgba(12,24,66,.98));box-shadow:0 0 0 1px rgba(67,140,255,.45),0 0 17px rgba(67,140,255,.20)}
+.srv[aria-checked="true"] .rd{background:#438cff;border-color:#8fc2ff}
+.srv[aria-checked="true"] .rd::after{content:"";width:4px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.srv.off{opacity:.58}
+@media(max-width:420px){.grid{gap:6px}.srv{min-height:70px;gap:5px;padding:9px 6px;border-radius:15px}.srv .ico{width:24px;height:27px;padding:4px}.srv .nm{font-size:10px}.srv .ld{font-size:10px}.srv .rd{top:5px;right:5px;width:14px;height:14px}}
+@media(max-width:360px){.srv .nm{font-size:9px}.srv .ld{font-size:9px}.srv .ico{width:21px}}
+/* Keep all interactive accents in the same cool palette. */
+:focus-visible{outline-color:#12d9ee}
+.gen{background:conic-gradient(from var(--a),#12d9ee,#438cff 25%,#925cff 50%,#438cff 75%,#12d9ee)}
+.gen .in{background:linear-gradient(135deg,rgba(24,55,119,.98),rgba(54,37,111,.95))}
+.gen .ico{color:#b8eaff}
+
 </style>
 <style id="apx-wm">
 :root{--wm-d:url("images/logo.webp?v=2");--wm-l:url("images/logo.webp?v=2");--wm:var(--wm-d)}
