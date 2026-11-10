@@ -1,9 +1,9 @@
 // Vercel build step: writes public/config.js so the website talks to the bot server on Railway.
-// Default: https://sigma.15-135-169-79.sslip.io/api/code?number=. To use another bot server set SIGMA_API_URL in Vercel -> Settings -> Environment Variables.
+// Default: https://sigma.15-135-169-79.sslip.io. To use another bot server set SIGMA_API_URL in Vercel -> Settings -> Environment Variables.
 const fs = require('fs');
 const path = require('path');
 
-const DEFAULT_API = 'https://sigma.15-135-169-79.sslip.io/api/code?number=';
+const DEFAULT_API = 'https://sigma.15-135-169-79.sslip.io';
 const raw = String(process.env.SIGMA_API_URL || DEFAULT_API).trim().replace(/\/+$/, '');
 if (!raw) {
   console.warn('[build-config] SIGMA_API_URL is not set. The page will call its own domain, so servers/pairing will not work on Vercel.');
