@@ -1,4 +1,4 @@
-// Vercel build step: writes public/config.js so the website talks to the bot server on Railway.
+// Vercel build step: writes public/config.js so the website talks to the public SIGMA bot server.
 // Default: https://sigma.15-135-169-79.sslip.io. To use another bot server set SIGMA_API_URL in Vercel -> Settings -> Environment Variables.
 const fs = require('fs');
 const path = require('path');

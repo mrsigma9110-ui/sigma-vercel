@@ -593,7 +593,7 @@ html[data-theme="light"]{--wm:var(--wm-l)}
 <script src="js/axios.min.js"></script>
 <script>
 const root=document.documentElement;
-/* API base: empty = same server (the bot hosts the page). On Vercel, config.js sets it to the bot's Railway URL. */
+/* API base: empty = same server (the bot hosts the page). On Vercel, config.js sets it to the public SIGMA bot server URL. */
 const API_BASE=String(window.SIGMA_API||'').replace(/\/+$/,'');
 axios.defaults.baseURL=API_BASE;
 axios.defaults.timeout=80000;
